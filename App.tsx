@@ -8,6 +8,7 @@
 import React, {useEffect, useState} from 'react';
 import {
   Button,
+  Platform,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -22,7 +23,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import firebase from '@react-native-firebase/app';
 import remoteConfig from '@react-native-firebase/remote-config';
 import crashlytics from '@react-native-firebase/crashlytics';
-// import analytics from '@react-native-firebase/analytics';
+import analytics from '@react-native-firebase/analytics';
 
 const RNfirebaseConfig = {
   apiKey: 'AIzaSyCEOOmqcBusHrh7Bql1BL-G4GLMENHVCcA',
@@ -103,6 +104,26 @@ function App(): React.JSX.Element {
     ]);
   }
 
+  async function initAnalytics() {
+    await firebase.analytics().setUserId(`${Platform.OS}-${Date.now()}`);
+    await firebase.analytics().setUserProperty('OS', `${Platform.OS}}`);
+    await firebase
+      .analytics()
+      .setUserProperty('Version', `${Platform.Version}}`);
+    console.log(
+      'firebase analytics -->',
+      await firebase.analytics().getAppInstanceId(),
+      await firebase.analytics().getSessionId(),
+    );
+    await firebase.analytics().setAnalyticsCollectionEnabled(true);
+    await firebase.analytics().setConsent({
+      analytics_storage: true,
+      ad_storage: true,
+      ad_user_data: true,
+      ad_personalization: true,
+    });
+  }
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
@@ -118,6 +139,7 @@ function App(): React.JSX.Element {
           <Text style={styles.sectionDescription}>
             Remote Config : {awRemote}
           </Text>
+          <Text style={styles.sectionDescription}>Crashlytics</Text>
           <Button
             title={enabled ? 'Disable Crashlytics' : 'Enable Crashlytics'}
             onPress={toggleCrashlytics}
@@ -131,6 +153,29 @@ function App(): React.JSX.Element {
                 username: 'Joaquin Phoenix',
                 email: 'phoenix@example.com',
                 credits: 42,
+              })
+            }
+          />
+          <Text style={styles.sectionDescription}>Analytics</Text>
+          <Button title={'Init Analytics'} onPress={initAnalytics} />
+          <Button
+            title="Add To Basket - Custom Event"
+            onPress={async () =>
+              await analytics().logEvent('basket', {
+                id: 3745092,
+                item: 'mens grey t-shirt',
+                description: ['round neck', 'long sleeved'],
+                size: 'L',
+              })
+            }
+          />
+          <Button
+            title="Press me - Predefined Event"
+            // Logs in the firebase analytics console as "select_content" event only accepts the two object properties which accept strings.
+            onPress={async () =>
+              await analytics().logSelectContent({
+                content_type: 'clothing',
+                item_id: 'abcd',
               })
             }
           />

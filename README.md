@@ -110,6 +110,7 @@ yarn add @react-native-firebase/app @react-native-firebase/remote-config @react-
 ## Firebase 
 * [RNfirebase Example](https://rnfirebase.io/)
 * [Remote Config Example](https://rnfirebase.io/remote-config/usage)
+* [Analytics](https://rnfirebase.io/analytics/usage)
 * [Firebase android setup](https://firebase.google.com/docs/android/setup)
 * [Firebase ios setup](https://firebase.google.com/docs/ios/setup)
 * [firebase-ios-sdk](https://github.com/firebase/firebase-ios-sdk)

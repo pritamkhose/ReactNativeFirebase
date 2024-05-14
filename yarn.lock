@@ -2329,6 +2329,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-firebase/analytics@npm:^19.2.2":
+  version: 19.2.2
+  resolution: "@react-native-firebase/analytics@npm:19.2.2"
+  peerDependencies:
+    "@react-native-firebase/app": 19.2.2
+  checksum: 05cd6690eb64e19a823d6454f27db35ad691f7323921eb3ba95ed5e6640b9c9b4e690357886853150aa2280367e18fe45061b8500e246a011159ff4461cd6e68
+  languageName: node
+  linkType: hard
+
 "@react-native-firebase/app@npm:^19.2.2":
   version: 19.2.2
   resolution: "@react-native-firebase/app@npm:19.2.2"
@@ -3043,6 +3052,7 @@ __metadata:
     "@babel/core": ^7.20.0
     "@babel/preset-env": ^7.20.0
     "@babel/runtime": ^7.20.0
+    "@react-native-firebase/analytics": ^19.2.2
     "@react-native-firebase/app": ^19.2.2
     "@react-native-firebase/crashlytics": ^19.2.2
     "@react-native-firebase/remote-config": ^19.2.2

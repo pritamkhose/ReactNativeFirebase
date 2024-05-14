@@ -4,6 +4,8 @@ PODS:
   - FBLazyVector (0.74.1)
   - Firebase (10.24.0):
     - Firebase/Core (= 10.24.0)
+  - Firebase/Analytics (10.24.0):
+    - Firebase/Core
   - Firebase/Core (10.24.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (~> 10.24.0)
@@ -1315,6 +1317,10 @@ PODS:
     - React-logger (= 0.74.1)
     - React-perflogger (= 0.74.1)
     - React-utils (= 0.74.1)
+  - RNFBAnalytics (19.2.2):
+    - Firebase/Analytics (= 10.24.0)
+    - React-Core
+    - RNFBApp
   - RNFBApp (19.2.2):
     - Firebase/CoreOnly (= 10.24.0)
     - React-Core
@@ -1397,6 +1403,7 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBCrashlytics (from `../node_modules/@react-native-firebase/crashlytics`)"
   - "RNFBRemoteConfig (from `../node_modules/@react-native-firebase/remote-config`)"
@@ -1533,6 +1540,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNFBAnalytics:
+    :path: "../node_modules/@react-native-firebase/analytics"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBCrashlytics:
@@ -1615,12 +1624,13 @@ SPEC CHECKSUMS:
   React-runtimescheduler: e2152ed146b6a35c07386fc2ac4827b27e6aad12
   React-utils: 3285151c9d1e3a28a9586571fc81d521678c196d
   ReactCommon: f42444e384d82ab89184aed5d6f3142748b54768
+  RNFBAnalytics: 2cb32724debf10247640657fd5c9294aced35167
   RNFBApp: 91311b27bc9a33e23b76a62825afd1635501018a
   RNFBCrashlytics: c3219ef7a0c779f2428236215781c38e7892f6f9
   RNFBRemoteConfig: 2e8c5b4caccd1a8ddf41298400a85a058c3c1faa
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   Yoga: b9a182ab00cf25926e7f79657d08c5d23c2d03b0
 
-PODFILE CHECKSUM: 356e5328a19138cf8e4067fab96565a44dec494a
+PODFILE CHECKSUM: 6d56b10c496db5102bd28cee65665caca21713bb
 
 COCOAPODS: 1.15.2

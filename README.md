@@ -1,6 +1,9 @@
+# React Native Firebase
+ React Native app with Firebase features
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+## Getting Started
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
@@ -58,6 +61,71 @@ Now that you have successfully run the app, let's modify it.
 ## Congratulations! :tada:
 
 You've successfully run and modified your React Native App. :partying_face:
+
+## Project command
+
+To run this project, use `yarn run android` or `yarn run ios`.
+if need clean this project, use `yarn run android-clean` or `yarn run ios-clean`.
+
+| yarn run ... | Description |
+| --- | --- |
+| android | Run android development-mode on simulator or phone |
+| android-debug | Build android .apk with “Debug” configuration |
+| android-release  | Build android .apk with “Release” configuration  |
+| android-clean | Fix building android if preDexDebug error on Windows OS|
+| android-clean-mac | Fix building android if preDexDebug error on Mac or linux OS |
+| android-bundle | Bundle with entry file index.android.js |
+| adb-reverse | Reset port ADB to tcp:8081 |
+| adb-uninstall | Uninstall android .apk with “Debug” configuration port ADB to tcp:8081 |
+| ios | Run iOS project with Simulator |
+| ios-install | install depedenceny for iOS project |
+| ios-release  | Build iOS .ipa with “Release” configuration  |
+| ios-build | Bundle xcode workspace |
+| ios-clean | clean xcode & pod building |
+| ios-device | list of iOS devices |
+| ios-15 | Run iOS project with Simulator iPhone 15 only |
+| yarn-clean| clean node modules |
+| test  | jest test case and coverage reprot  |
+| lint | eslint js file |
+
+To fix MAC Apple silcon devices M1 cocapad pod install issue fix by command where more info [Github issue tracker](https://github.com/CocoaPods/CocoaPods/issues/10287) and [Youtube video](https://www.youtube.com/watch?v=zdv9qE4j-VU).
+```sh
+cd ios
+sudo arch -x86_64 gem install ffi
+arch -x86_64 pod install
+arch -x86_64 pod update 
+arch -x86_64 pod install --repo-update
+cd ..
+
+or
+
+npx pod-install
+```
+
+## Dependency
+```sh
+yarn add @react-native-firebase/app @react-native-firebase/remote-config @react-native-firebase/crashlytics
+```
+
+## Firebase 
+* [RNfirebase Example](https://rnfirebase.io/)
+* [Remote Config Example](https://rnfirebase.io/remote-config/usage)
+* [Firebase android setup](https://firebase.google.com/docs/android/setup)
+* [Firebase ios setup](https://firebase.google.com/docs/ios/setup)
+* [firebase-ios-sdk](https://github.com/firebase/firebase-ios-sdk)
+* [Firebase Console](https://console.firebase.google.com/u/0/project/reactnativefirebase-f54c4/overview)
+* [Swift pods cannot yet be integrated as static libraries](https://stackoverflow.com/questions/72289521/swift-pods-cannot-yet-be-integrated-as-static-libraries-firebasecoreinternal-lib)
+* [Firebase Quickstarts for Android](https://github.com/firebase/quickstart-android)
+* [React-Native: Firebase Error: No Firebase App DEFAULT](https://stackoverflow.com/questions/72641483/react-native-firebase-error-no-firebase-app-default-has-been-created-call)
+* [Initializing secondary apps](https://rnfirebase.io/app/usage#secondary-apps)
+
+## Firebase Crashlytics
+* [Crashlytics Example](https://rnfirebase.io/crashlytics/usage)
+* [Crashlytics Logrocket](https://blog.logrocket.com/guide-crashlytics-react-native/)
+* [Get started](https://firebase.google.com/docs/crashlytics/get-started?platform=android#add-sdk)
+
+## Links
+* [Android enabling multidex](https://rnfirebase.io/enabling-multidex)
 
 ### Now what?
 

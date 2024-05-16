@@ -105,6 +105,11 @@ npx pod-install
 ## Dependency
 ```sh
 yarn add @react-native-firebase/app @react-native-firebase/remote-config @react-native-firebase/crashlytics
+
+yarn add @react-navigation/native @react-navigation/native-stack react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context
+npx pod-install ios
+
+yarn add @react-navigation/bottom-tabs @react-navigation/drawer
 ```
 
 ## Firebase 
@@ -119,6 +124,7 @@ yarn add @react-native-firebase/app @react-native-firebase/remote-config @react-
 * [Firebase Quickstarts for Android](https://github.com/firebase/quickstart-android)
 * [React-Native: Firebase Error: No Firebase App DEFAULT](https://stackoverflow.com/questions/72641483/react-native-firebase-error-no-firebase-app-default-has-been-created-call)
 * [Initializing secondary apps](https://rnfirebase.io/app/usage#secondary-apps)
+* [ndk releases](https://github.com/android/ndk/releases)
 
 ## Firebase Crashlytics
 * [Crashlytics Example](https://rnfirebase.io/crashlytics/usage)

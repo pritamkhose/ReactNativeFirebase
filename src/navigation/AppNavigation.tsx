@@ -16,13 +16,35 @@ import Search from '../screen/Search';
 import GoogleAnalytics from '../screen/GoogleAnalytics';
 import Crashlytics from '../screen/Crashlytics';
 import RemoteConfig from '../screen/RemoteConfig';
+import FireDatabase from '../screen/FireDatabase';
 import AppConstant from '../component/AppConstant';
+import analytics from '@react-native-firebase/analytics';
 
 const Drawer = createDrawerNavigator();
 
 const AppNavigation = () => {
+  const routeNameRef = React.useRef();
+  const navigationRef = React.useRef();
+
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      ref={navigationRef}
+      onReady={() => {
+        routeNameRef.current = navigationRef.current.getCurrentRoute().name;
+      }}
+      onStateChange={async () => {
+        const previousRouteName = routeNameRef.current;
+        const currentRouteName = navigationRef.current.getCurrentRoute().name;
+
+        if (previousRouteName !== currentRouteName) {
+          console.log('logScreenView -->', previousRouteName, currentRouteName);
+          await analytics().logScreenView({
+            screen_name: currentRouteName,
+            screen_class: currentRouteName,
+          });
+        }
+        routeNameRef.current = currentRouteName;
+      }}>
       <Drawer.Navigator
         initialRouteName="Home"
         drawerContent={props => <CustomDrawerContent {...props} />}>
@@ -50,6 +72,11 @@ const AppNavigation = () => {
           name="Search"
           component={Search}
           options={{drawerLabel: 'Search'}}
+        />
+        <Drawer.Screen
+          name="FireDatabase"
+          component={FireDatabase}
+          options={{drawerLabel: 'Fire Database'}}
         />
       </Drawer.Navigator>
     </NavigationContainer>
@@ -87,6 +114,11 @@ function CustomDrawerContent(props: any) {
         props,
         'GoogleAnalytics',
         require('../assets/images/list.png'),
+      )}
+      {drawerItemsWithIcon(
+        props,
+        'FireDatabase',
+        require('../assets/images/news.png'),
       )}
     </DrawerContentScrollView>
   );

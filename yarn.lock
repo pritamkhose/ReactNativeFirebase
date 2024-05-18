@@ -3191,7 +3191,9 @@ __metadata:
     jest: ^29.6.3
     prettier: 2.8.8
     react: 18.2.0
+    react-hook-form: ^7.51.4
     react-native: 0.74.1
+    react-native-element-dropdown: ^2.12.0
     react-native-gesture-handler: ^2.16.2
     react-native-reanimated: ^3.11.0
     react-native-safe-area-context: ^4.10.1
@@ -8260,6 +8262,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-hook-form@npm:^7.51.4":
+  version: 7.51.4
+  resolution: "react-hook-form@npm:7.51.4"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18
+  checksum: b3587c23425025cc4ab9d4de71420aeb9b28809a9183691584ecbbf5bb3d85ab8c232afb01424efed11a761c9c726521a230d4e092c7ad6bb70a011a7ba0acf7
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.12.0 || ^17.0.0 || ^18.0.0, react-is@npm:^18.0.0, react-is@npm:^18.2.0":
   version: 18.3.1
   resolution: "react-is@npm:18.3.1"
@@ -8278,6 +8289,18 @@ __metadata:
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 9d6d111d8990dc98bc5402c1266a808b0459b5d54830bbea24c12d908b536df7883f268a7868cfaedde3dd9d4e0d574db456f84d2e6df9c4526f99bb4b5344d8
+  languageName: node
+  linkType: hard
+
+"react-native-element-dropdown@npm:^2.12.0":
+  version: 2.12.0
+  resolution: "react-native-element-dropdown@npm:2.12.0"
+  dependencies:
+    lodash: ^4.17.21
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 116841290b58ecbee2e3134219f83e82236290b48e52c0cb26719844514702d0240d6dcf958847ff003b2e6a50de005787a6999a3ddffaf3b760ac01f9ca7d3f
   languageName: node
   linkType: hard
 

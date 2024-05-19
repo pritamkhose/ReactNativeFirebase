@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 import colorTheme from './ColorTheme';
 import {Dimensions} from 'react-native';
+import ColorTheme from './ColorTheme';
 
 const {width, height} = Dimensions.get('window');
 
@@ -154,6 +155,37 @@ const styles = StyleSheet.create({
     margin: 4,
     fontSize: 14,
     color: 'black',
+  },
+  scrollView: {
+    backgroundColor: ColorTheme.primaryColor,
+  },
+  textScrollTitle: {
+    fontSize: 24,
+    color: 'white',
+    margin: 4,
+    paddingHorizontal: 8,
+    backgroundColor: ColorTheme.primaryColor,
+  },
+  textTitle: {
+    fontSize: 24,
+    margin: 4,
+    paddingHorizontal: 8,
+    textAlign: 'center',
+    color: ColorTheme.primaryColor,
+  },
+  textDetails: {
+    fontSize: 16,
+    margin: 4,
+    paddingHorizontal: 8,
+    color: ColorTheme.black,
+  },
+  textDescription: {
+    marginVertical: 12,
+    fontSize: 20,
+    marginHorizontal: 8,
+    paddingHorizontal: 8,
+    textAlign: 'center',
+    color: ColorTheme.black,
   },
 });
 

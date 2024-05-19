@@ -119,6 +119,7 @@ yarn add @react-navigation/bottom-tabs @react-navigation/drawer
 * [Analytics - Screen tracking](https://rnfirebase.io/analytics/screen-tracking)
 * [react-native-element-dropdown](https://www.npmjs.com/package/react-native-element-dropdown)
 * [react-hook-form error message](https://react-hook-form.com/docs/useformstate/errormessage)
+* [Firebase database](https://rnfirebase.io/database/usage)
 * [Firebase android setup](https://firebase.google.com/docs/android/setup)
 * [Firebase ios setup](https://firebase.google.com/docs/ios/setup)
 * [firebase-ios-sdk](https://github.com/firebase/firebase-ios-sdk)

@@ -16,6 +16,7 @@ import Search from '../screen/Search';
 import GoogleAnalytics from '../screen/GoogleAnalytics';
 import Crashlytics from '../screen/Crashlytics';
 import RemoteConfig from '../screen/RemoteConfig';
+import Details from '../screen/Details';
 import FireDatabase from '../screen/FireDatabase';
 import AppConstant from '../component/AppConstant';
 import analytics from '@react-native-firebase/analytics';
@@ -78,6 +79,11 @@ const AppNavigation = () => {
           component={FireDatabase}
           options={{drawerLabel: 'Fire Database'}}
         />
+        <Drawer.Screen
+          name="Details"
+          component={Details}
+          options={{drawerLabel: 'Details'}}
+        />
       </Drawer.Navigator>
     </NavigationContainer>
   );
@@ -119,6 +125,11 @@ function CustomDrawerContent(props: any) {
         props,
         'FireDatabase',
         require('../assets/images/news.png'),
+      )}
+      {drawerItemsWithIcon(
+        props,
+        'Details',
+        require('../assets/images/menu.png'),
       )}
     </DrawerContentScrollView>
   );

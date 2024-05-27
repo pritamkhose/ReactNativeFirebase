@@ -6,9 +6,10 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
-  // Button,
+  Button,
 } from 'react-native';
-// import SoundPlayer from 'react-native-sound-player';
+import analytics from '@react-native-firebase/analytics';
+import SoundPlayer from 'react-native-sound-player';
 import styles from '../component/Styles';
 
 const locArr = [
@@ -78,11 +79,20 @@ const Details = () => {
           {locArr.map((data, index) => {
             return (
               <TouchableOpacity
+                key={index}
                 activeOpacity={1}
-                onPress={() => setMarkerData(data)}>
-                <Text key={index} style={styles.textScrollTitle}>
-                  {data.title}
-                </Text>
+                onPress={async() => {
+                  setMarkerData(data);
+                  SoundPlayer.stop();
+                  const a = await analytics().logEvent('Details', {
+                    id: markerData.id,
+                    item: markerData.title,
+                    description: markerData.description,
+                    isClick: false,
+                  });
+                  console.log('analytics -->', a);
+                }}>
+                <Text style={styles.textScrollTitle}>{data.title}</Text>
               </TouchableOpacity>
             );
           })}
@@ -102,39 +112,74 @@ const Details = () => {
           </View>
           <Text style={styles.textTitle}>{markerData.title}</Text>
           <Text style={styles.textDescription}>{markerData.description}</Text>
-          {/* <Button
+          <Button
             title="Play"
-            onPress={() => {
+            onPress={async () => {
               const url =
-                'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
+                'https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_500KB_MP3.mp3';
               console.log('Audio-->', url);
               try {
+                const info = await SoundPlayer.getInfo();
                 // SoundPlayer.playSoundFile('tone', 'mp3');  // play the file tone.mp3
-                SoundPlayer.playUrl(url); // or play from url
+                console.log('Audio-->', await SoundPlayer.getInfo());
+                if (info !== null && info.currentTime > 0) {
+                  SoundPlayer.stop();
+                } else {
+                  SoundPlayer.playUrl(url); // or play from url
+                }
+              } catch (e) {
+                console.log('cannot play the sound file', e);
+              }
+              const b = await analytics().logEvent('Details', {
+                id: markerData.id,
+                item: markerData.title,
+                description: markerData.description,
+                url,
+                isClick: true,
+              });
+              console.log('analytics -->', b);
+            }}
+          />
+          {/* <Button
+            title="Pause"
+            onPress={async () => {
+              try {
+                SoundPlayer.pause();
+              } catch (e) {
+                console.log('cannot play the sound file', e);
+              }
+            }}
+          />
+          <Button
+            title="Resume"
+            onPress={async () => {
+              try {
+                SoundPlayer.resume();
               } catch (e) {
                 console.log('cannot play the sound file', e);
               }
             }}
           /> */}
           <Text style={styles.textDetails}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply
-            dummy text of the printing and typesetting industry. Lorem Ipsum has
-            been the industry's standard dummy text ever since the 1500s, when
-            an unknown printer took a galley of type and scrambled it to make a
-            type specimen book. It has survived not only five centuries, but
-            also the leap into electronic typesetting, remaining essentially
-            unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently
-            with desktop publishing software like Aldus PageMaker including
-            versions of Lorem Ipsum.
+            {markerData.title} - {markerData.description} - Lorem Ipsum is
+            simply dummy text of the printing and typesetting industry. Lorem
+            Ipsum has been the industry's standard dummy text ever since the
+            1500s, when an unknown printer took a galley of type and scrambled
+            it to make a type specimen book. It has survived not only five
+            centuries, but also the leap into electronic typesetting, remaining
+            essentially unchanged. It was popularised in the 1960s with the
+            release of Letraset sheets containing Lorem Ipsum passages, and more
+            recently with desktop publishing software like Aldus PageMaker
+            including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text
+            of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type
+            specimen book. It has survived not only five centuries, but also the
+            leap into electronic typesetting, remaining essentially unchanged.
+            It was popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem
+            Ipsum.
           </Text>
         </ScrollView>
       </View>

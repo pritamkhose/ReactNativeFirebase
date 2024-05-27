@@ -50,14 +50,15 @@ const GoogleAnalytics = () => {
         <Button title={'Init Analytics'} onPress={initAnalytics} />
         <Button
           title="Add To Basket - Custom Event"
-          onPress={async () =>
-            await analytics().logEvent('basket', {
+          onPress={async () => {
+            const b = await analytics().logEvent('basket', {
               id: 3745092,
               item: 'mens grey t-shirt',
               description: ['round neck', 'long sleeved'],
               size: 'L',
-            })
-          }
+            });
+            console.log('analytics -->', b);
+          }}
         />
         <Button
           title="Press me - Predefined Event"
